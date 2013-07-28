@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DatoTipo" representedClassName="DatoTipo" syncable="YES">
+        <attribute name="detalleTipoGeneral" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="direccionTipo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imagenTipo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="latitudTipo" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitudTipo" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="mailTipo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombreTipo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publicidadTipo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="telefonoTipo" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relacionTipoAlimentacion" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TipoAlimentacion" inverseName="datosTipoAlimentacion" inverseEntity="TipoAlimentacion" syncable="YES"/>
+        <relationship name="relacionTipoAlojamiento" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TipoAlojamiento" inverseName="datosTipoAlojamientos" inverseEntity="TipoAlojamiento" syncable="YES"/>
+        <relationship name="relacionTipoComercio" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TipoComercio" inverseName="datosTipoComercio" inverseEntity="TipoComercio" syncable="YES"/>
+        <relationship name="relacionTipoComunicacion" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TipoComunicacion" inverseName="datosTipoComunicacion" inverseEntity="TipoComunicacion" syncable="YES"/>
+        <relationship name="relacionTipoEmergencia" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TipoEmergencia" inverseName="datosTipoEmergencia" inverseEntity="TipoEmergencia" syncable="YES"/>
+        <relationship name="relacionTipoMedioTrasporte" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="MedioTransporte" inverseName="datosTipoMedioTransporte" inverseEntity="MedioTransporte" syncable="YES"/>
+        <relationship name="relacionTipoPorConocer" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TipoPorConocer" inverseName="datosTipoTipoPorConocer" inverseEntity="TipoPorConocer" syncable="YES"/>
+    </entity>
+    <entity name="MedioTransporte" representedClassName="MedioTransporte" syncable="YES">
+        <attribute name="tipoMedioTranstorte" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="datosTipoMedioTransporte" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DatoTipo" inverseName="relacionTipoMedioTrasporte" inverseEntity="DatoTipo" syncable="YES"/>
+        <relationship name="relBaseMedioTrasporte" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="RecomendacionBase" inverseName="tiposMedioTransporte" inverseEntity="RecomendacionBase" syncable="YES"/>
+    </entity>
+    <entity name="RecomendacionBase" representedClassName="RecomendacionBase" syncable="YES">
+        <relationship name="tiposAlimentacion" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TipoAlimentacion" inverseName="relBaseAlimenacion" inverseEntity="TipoAlimentacion" syncable="YES"/>
+        <relationship name="tiposAlojamiento" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TipoAlojamiento" inverseName="relBaseAlojamiento" inverseEntity="TipoAlojamiento" syncable="YES"/>
+        <relationship name="tiposComercio" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TipoComercio" inverseName="relBaseComercio" inverseEntity="TipoComercio" syncable="YES"/>
+        <relationship name="tiposComunicaciones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TipoComunicacion" inverseName="relBaseComunicacion" inverseEntity="TipoComunicacion" syncable="YES"/>
+        <relationship name="tiposEmergencia" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TipoEmergencia" inverseName="relBaseTipoEmergencia" inverseEntity="TipoEmergencia" syncable="YES"/>
+        <relationship name="tiposMedioTransporte" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MedioTransporte" inverseName="relBaseMedioTrasporte" inverseEntity="MedioTransporte" syncable="YES"/>
+        <relationship name="tiposPorConocer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TipoPorConocer" inverseName="relBasePorConocer" inverseEntity="TipoPorConocer" syncable="YES"/>
+        <relationship name="tiposSanitarias" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Retrete" inverseName="relBaseSanitaria" inverseEntity="Retrete" syncable="YES"/>
+    </entity>
+    <entity name="Retrete" representedClassName="Retrete" syncable="YES">
+        <attribute name="direccionRecinto" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imagenRecinto" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="latitudRecinto" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitudRecinto" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="mailRecinto" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombreRecinto" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telefonoRecinto" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relBaseSanitaria" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="RecomendacionBase" inverseName="tiposSanitarias" inverseEntity="RecomendacionBase" syncable="YES"/>
+    </entity>
+    <entity name="TipoAlimentacion" representedClassName="TipoAlimentacion" syncable="YES">
+        <attribute name="tipoComida" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="datosTipoAlimentacion" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DatoTipo" inverseName="relacionTipoAlimentacion" inverseEntity="DatoTipo" syncable="YES"/>
+        <relationship name="relBaseAlimenacion" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="RecomendacionBase" inverseName="tiposAlimentacion" inverseEntity="RecomendacionBase" syncable="YES"/>
+    </entity>
+    <entity name="TipoAlojamiento" representedClassName="TipoAlojamiento" syncable="YES">
+        <attribute name="tipoAlojamiento" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="datosTipoAlojamientos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DatoTipo" inverseName="relacionTipoAlojamiento" inverseEntity="DatoTipo" syncable="YES"/>
+        <relationship name="relBaseAlojamiento" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="RecomendacionBase" inverseName="tiposAlojamiento" inverseEntity="RecomendacionBase" syncable="YES"/>
+    </entity>
+    <entity name="TipoComercio" representedClassName="TipoComercio" syncable="YES">
+        <attribute name="tipoComercio" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="datosTipoComercio" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DatoTipo" inverseName="relacionTipoComercio" inverseEntity="DatoTipo" syncable="YES"/>
+        <relationship name="relBaseComercio" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="RecomendacionBase" inverseName="tiposComercio" inverseEntity="RecomendacionBase" syncable="YES"/>
+    </entity>
+    <entity name="TipoComunicacion" representedClassName="TipoComunicacion" syncable="YES">
+        <attribute name="tipoComunacacion" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="datosTipoComunicacion" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DatoTipo" inverseName="relacionTipoComunicacion" inverseEntity="DatoTipo" syncable="YES"/>
+        <relationship name="relBaseComunicacion" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="RecomendacionBase" inverseName="tiposComunicaciones" inverseEntity="RecomendacionBase" syncable="YES"/>
+    </entity>
+    <entity name="TipoEmergencia" representedClassName="TipoEmergencia" syncable="YES">
+        <attribute name="tipoEmergencia" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="datosTipoEmergencia" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DatoTipo" inverseName="relacionTipoEmergencia" inverseEntity="DatoTipo" syncable="YES"/>
+        <relationship name="relBaseTipoEmergencia" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="RecomendacionBase" inverseName="tiposEmergencia" inverseEntity="RecomendacionBase" syncable="YES"/>
+    </entity>
+    <entity name="TipoPorConocer" representedClassName="TipoPorConocer" syncable="YES">
+        <attribute name="tipoPorConocer" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="datosTipoTipoPorConocer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DatoTipo" inverseName="relacionTipoPorConocer" inverseEntity="DatoTipo" syncable="YES"/>
+        <relationship name="relBasePorConocer" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="RecomendacionBase" inverseName="tiposPorConocer" inverseEntity="RecomendacionBase" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TipoAlojamiento" positionX="322" positionY="-142" width="128" height="88"/>
+        <element name="RecomendacionBase" positionX="43" positionY="-46" width="128" height="163"/>
+        <element name="TipoEmergencia" positionX="367" positionY="351" width="128" height="88"/>
+        <element name="MedioTransporte" positionX="360" positionY="-252" width="128" height="88"/>
+        <element name="TipoPorConocer" positionX="351" positionY="-34" width="128" height="88"/>
+        <element name="TipoAlimentacion" positionX="367" positionY="-360" width="128" height="88"/>
+        <element name="Retrete" positionX="-117" positionY="17" width="128" height="163"/>
+        <element name="TipoComercio" positionX="351" positionY="90" width="128" height="88"/>
+        <element name="TipoComunicacion" positionX="358" positionY="227" width="128" height="88"/>
+        <element name="DatoTipo" positionX="666" positionY="-63" width="128" height="283"/>
+    </elements>
+</model>
